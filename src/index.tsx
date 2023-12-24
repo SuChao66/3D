@@ -9,6 +9,8 @@ import store from '@/store'
 import App from './App'
 // 导入重置样式
 import 'normalize.css'
+// 导入全局样式
+import '@/styles/index.less'
 // 导入antd样式
 import 'antd/dist/reset.css'
 // 引入i18n国际化配置文件
