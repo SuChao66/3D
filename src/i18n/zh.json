@@ -1,0 +1,7 @@
+{
+  "article": "文章",
+  "recommended_reading": "推荐阅读",
+  "tags": "文章标签",
+  "classify": "文章分类",
+  "currentTime": "当前时间: {{time}}"
+}
