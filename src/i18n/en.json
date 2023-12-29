@@ -1,6 +1,5 @@
 {
   "zh": "Chinese",
   "en": "English",
-  "article": "article",
-  "currentTime": "current time is: {{time}}"
+  "websiteTitle": "ThreeJS Case Appreciation"
 }

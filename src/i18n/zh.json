@@ -1,6 +1,5 @@
 {
   "zh": "中文",
   "en": "英文",
-  "article": "文章",
-  "currentTime": "当前时间: {{time}}"
+  "websiteTitle": "ThreeJS 案例鉴赏"
 }

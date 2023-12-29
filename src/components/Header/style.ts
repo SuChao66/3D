@@ -11,11 +11,40 @@ export const HeaderWrapper = styled.div`
   .right {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     padding-right: 20px;
-    .ant-dropdown-trigger {
-      .ant-space-item {
-        color: var(--font-color-white);
+    .theme-box {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      .theme-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
+    }
+    .lang-box {
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      .ant-dropdown-trigger {
+        .ant-space {
+          display: flex;
+          align-items: center;
+          .ant-space-item {
+            color: var(--font-color-white);
+          }
+        }
+      }
+    }
+    .github-box {
+      cursor: pointer;
+    }
+    svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      display: flex;
     }
   }
 `
