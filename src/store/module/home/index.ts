@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 // 导入类型
 import type { InitialStateType } from './types'
+// 导入配置数据
+import { caseList } from './config'
 
 // 定义一个初始化
 const initialState: InitialStateType = {
-  homeTitle: '3D sample'
+  caseList: caseList
 }
 
 const homeSlice = createSlice({

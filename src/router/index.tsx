@@ -5,10 +5,14 @@ import type { RouteObject } from 'react-router-dom'
 const Home = React.lazy(
   () => import(/* webpackChunkName: 'Home' */ '@/views/Home')
 )
+const Metahuman = React.lazy(
+  () => import(/* webpackChunkName: 'Metahuman' */ '@/views/Metahuman')
+)
 
 const routes: RouteObject[] = [
   { path: '/', element: <Navigate to="/home" /> },
-  { path: '/home', element: <Home /> }
+  { path: '/home', element: <Home /> },
+  { path: '/human', element: <Metahuman /> }
 ]
 
 export default routes
