@@ -59,7 +59,11 @@ const Home: FC<IProps> = () => {
               onClick={() => jumpToCase(item.path)}
               key={index}
               hoverable
-              style={{ width: '23%', margin: 10, minWidth: '100px' }}
+              style={{
+                width: '23%',
+                margin: 10,
+                minWidth: '100px'
+              }}
               cover={<img alt="example" src={item.image} />}
             >
               <Meta title={item.title} description={item.description} />

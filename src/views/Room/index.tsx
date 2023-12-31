@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react'
+import React, { memo, useState, useEffect, useRef } from 'react'
 import type { ReactNode, FC } from 'react'
 // 导入样式
 import { RoomWrapper } from './style'
@@ -28,7 +28,8 @@ function clearScene(scene: THREE.Scene) {
 
 const Room: FC<IProps> = () => {
   const [isLoading, setIsLoading] = useState(true)
-  const [method, setMethod] = useState('sphere')
+  const [method, setMethod] = useState('cube')
+  const statusRef = useRef<HTMLDivElement | null>(null)
   // 定义全局变量
   let scene: THREE.Scene,
     camera: THREE.PerspectiveCamera,
@@ -64,7 +65,7 @@ const Room: FC<IProps> = () => {
   const initThree = () => {
     // 0.初始化性能监视器
     status = new Status()
-    document.documentElement.appendChild(status.dom)
+    statusRef.current?.appendChild(status.dom)
 
     // 1.创建场景
     scene = new THREE.Scene()
@@ -187,6 +188,7 @@ const Room: FC<IProps> = () => {
 
   return (
     <RoomWrapper>
+      <div ref={statusRef}></div>
       {isLoading && (
         <div className="loading">
           <Spin />

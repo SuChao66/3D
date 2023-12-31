@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from 'react'
+import React, { memo, useState, useEffect, useRef } from 'react'
 import type { ReactNode, FC } from 'react'
 // 导入样式
 import { RobotWrapper } from './style'
@@ -28,6 +28,7 @@ interface IProps {
 
 const Metahuman: FC<IProps> = () => {
   const [isLoading, setIsLoading] = useState(true)
+  const statusRef = useRef<HTMLDivElement | null>(null)
   // 定义全局变量
   let scene: THREE.Scene,
     camera: THREE.PerspectiveCamera,
@@ -57,7 +58,7 @@ const Metahuman: FC<IProps> = () => {
   const initThree = () => {
     // 0.初始化性能监视器
     status = new Status()
-    document.documentElement.appendChild(status.dom)
+    statusRef && statusRef.current?.appendChild(status.dom)
 
     // 1.创建场景
     scene = new THREE.Scene()
@@ -130,7 +131,6 @@ const Metahuman: FC<IProps> = () => {
     gltfLoader.load('./models/robot.glb', (gltf) => {
       robot = gltf.scene
       scene.add(robot)
-      console.log(robot)
       // 关闭loading
       setIsLoading(false)
     })
@@ -213,6 +213,7 @@ const Metahuman: FC<IProps> = () => {
 
   return (
     <RobotWrapper>
+      <div ref={statusRef}></div>
       {isLoading && (
         <div className="loading">
           <Spin />

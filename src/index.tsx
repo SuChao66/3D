@@ -15,11 +15,13 @@ import '@/styles/index.less'
 import 'antd/dist/reset.css'
 // 引入i18n国际化配置文件
 import '@/i18n'
+// 导入组件
+import { Spin } from 'antd'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   // 路由懒加载
-  <Suspense fallback="loadng...">
+  <Suspense fallback={<Spin />}>
     {/* 全局提供store */}
     <Provider store={store}>
       {/* 路由方式 */}
