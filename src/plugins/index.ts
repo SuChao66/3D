@@ -1,3 +1,4 @@
+// 导入svg，以组件形式
 import { ReactComponent as SunLight } from '@/assets/svg/sunLight.svg'
 import { ReactComponent as SunDark } from '@/assets/svg/sunDark.svg'
 import { ReactComponent as MoonLight } from '@/assets/svg/moonLight.svg'

@@ -10,8 +10,6 @@ import {
 } from '@/hooks/useSelectorHook'
 import { CHANGE_THEME_ACTION } from '@/store/module/global'
 import { Theme } from '@/store/module/global/types'
-// 导入国际化
-import { useTranslation } from 'react-i18next'
 // 导入路由函数
 import { useNavigate } from 'react-router-dom'
 // 导入组件
@@ -32,7 +30,6 @@ const Home: FC<IProps> = () => {
   )
   const { Meta } = Card
   // 初始化hook
-  const { t } = useTranslation()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
 
