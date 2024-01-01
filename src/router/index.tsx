@@ -38,6 +38,10 @@ const CoolEarth = React.lazy(
 const Building = React.lazy(
   () => import(/* webpackChunkName: 'Earth' */ '@/views/module/Building')
 )
+// 圣诞贺卡
+const MerryCard = React.lazy(
+  () => import(/* webpackChunkName: 'MerryCard' */ '@/views/module/MerryCard')
+)
 
 const routes: RouteObject[] = [
   { path: '/', element: <Navigate to="/home" /> },
@@ -49,7 +53,8 @@ const routes: RouteObject[] = [
   { path: '/happyNewYear', element: <HappyNewYear /> },
   { path: '/earthMoon', element: <Earth /> },
   { path: '/earth', element: <CoolEarth /> },
-  { path: '/building', element: <Building /> }
+  { path: '/building', element: <Building /> },
+  { path: '/merry', element: <MerryCard /> }
 ]
 
 export default routes

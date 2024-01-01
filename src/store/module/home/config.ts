@@ -54,5 +54,12 @@ export const caseList = [
     description: '🏠 元宇宙未来城市',
     image: require('@/assets/images/3d_building.png'),
     three: true
+  },
+  {
+    path: '/merry',
+    title: '圣诞快乐',
+    description: '🎄 愿你圣诞快乐',
+    image: require('@/assets/images/merry_card.png'),
+    three: true
   }
 ]

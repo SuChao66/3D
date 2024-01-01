@@ -49,6 +49,13 @@ const CoolEarth: FC<IProps> = () => {
 
   useEffect(() => {
     init()
+
+    // 监听窗口的变化
+    window.addEventListener('resize', handleResize)
+    // 销毁
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   function init() {
@@ -398,6 +405,19 @@ const CoolEarth: FC<IProps> = () => {
     labelRenderer.render(scene, camera)
     controls.update()
     status.update()
+  }
+
+  /**
+   * 监听窗口的变化
+   */
+  const handleResize = () => {
+    const aspect = window.innerWidth / window.innerHeight
+    camera.aspect = aspect
+    // 更新相机投影矩阵
+    camera.updateProjectionMatrix()
+    // 重置设置画布大小
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    labelRenderer.setSize(window.innerWidth, window.innerHeight)
   }
 
   return (
