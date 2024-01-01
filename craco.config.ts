@@ -28,6 +28,21 @@ module.exports = {
     alias: {
       '@': resolve('src'),
       comments: resolve('src/components')
+    },
+    configure: {
+      module: {
+        rules: [
+          {
+            test: /\.glsl$/,
+            use: [
+              {
+                loader: 'raw-loader'
+                // loader: 'webpack-glsl-loader'
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }

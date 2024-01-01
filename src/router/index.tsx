@@ -7,19 +7,36 @@ const Home = React.lazy(
 )
 // 元宇宙机器人
 const Robot = React.lazy(
-  () => import(/* webpackChunkName: 'Robot' */ '@/views/Robot')
+  () => import(/* webpackChunkName: 'Robot' */ '@/views/module/Robot')
 )
 // 3D看房
 const Room = React.lazy(
-  () => import(/* webpackChunkName: 'Room' */ '@/views/Room')
+  () => import(/* webpackChunkName: 'Room' */ '@/views/module/Room')
 )
 // 海天一色
 const IsLand = React.lazy(
-  () => import(/* webpackChunkName: 'IsLand' */ '@/views/IsLand')
+  () => import(/* webpackChunkName: 'IsLand' */ '@/views/module/IsLand')
 )
 // 酷炫3D字体
 const Font = React.lazy(
-  () => import(/* webpackChunkName: 'IsLand' */ '@/views/Font')
+  () => import(/* webpackChunkName: 'IsLand' */ '@/views/module/Font')
+)
+// 新春快乐
+const HappyNewYear = React.lazy(
+  () =>
+    import(/* webpackChunkName: 'HappyNewYear' */ '@/views/module/HappyNewYear')
+)
+// 地月同心
+const Earth = React.lazy(
+  () => import(/* webpackChunkName: 'Earth' */ '@/views/module/Earth')
+)
+// 酷炫3D地球
+const CoolEarth = React.lazy(
+  () => import(/* webpackChunkName: 'Earth' */ '@/views/module/CoolEarth')
+)
+// 酷炫建筑物
+const Building = React.lazy(
+  () => import(/* webpackChunkName: 'Earth' */ '@/views/module/Building')
 )
 
 const routes: RouteObject[] = [
@@ -28,7 +45,11 @@ const routes: RouteObject[] = [
   { path: '/robot', element: <Robot /> },
   { path: '/room', element: <Room /> },
   { path: '/isLand', element: <IsLand /> },
-  { path: '/font', element: <Font /> }
+  { path: '/font', element: <Font /> },
+  { path: '/happyNewYear', element: <HappyNewYear /> },
+  { path: '/earthMoon', element: <Earth /> },
+  { path: '/earth', element: <CoolEarth /> },
+  { path: '/building', element: <Building /> }
 ]
 
 export default routes

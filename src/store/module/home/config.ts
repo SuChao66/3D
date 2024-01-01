@@ -26,5 +26,33 @@ export const caseList = [
     description: '🎨 酷炫3D字体',
     image: require('@/assets/images/3d_font.png'),
     three: true
+  },
+  {
+    path: '/happyNewYear',
+    title: 'Happy New Year',
+    description: '🧨 新春快乐',
+    image: require('@/assets/images/happy_new_year.png'),
+    three: true
+  },
+  {
+    path: '/earthMoon',
+    title: '地月同心',
+    description: '🌍🌕 地月同心，永世相伴',
+    image: require('@/assets/images/earth_moon.png'),
+    three: true
+  },
+  {
+    path: '/earth',
+    title: '酷炫3D地球',
+    description: '🌍 酷炫3D地球-月球',
+    image: require('@/assets/images/3d_earth.png'),
+    three: true
+  },
+  {
+    path: '/building',
+    title: '酷炫3D建筑',
+    description: '🏠 元宇宙未来城市',
+    image: require('@/assets/images/3d_building.png'),
+    three: true
   }
 ]
