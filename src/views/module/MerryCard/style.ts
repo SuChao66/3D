@@ -19,4 +19,12 @@ export const MerryCardWrapper = styled.div`
       margin-left: 10px;
     }
   }
+  .text {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    font-size: 32px;
+    color: #ffffff;
+    font-weight: 600;
+  }
 `

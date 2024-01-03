@@ -4,7 +4,8 @@
  * @param interval 时间
  * @returns 返回一个函数
  */
-export const debounce = (fn: () => void, interval: number) => {
+type FnType = (e?: any) => void
+export const debounce = (fn: FnType, interval: number) => {
   let timer: ReturnType<typeof setTimeout> | undefined
   return () => {
     clearTimeout(timer)

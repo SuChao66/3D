@@ -29,7 +29,8 @@ interface IProps {
 const MerryCard: FC<IProps> = () => {
   const [isLoading, setIsLoading] = useState(true)
   const statusRef = useRef<HTMLDivElement | null>(null)
-  const [isAnimate, setIsAnimate] = useState(false)
+  const isAnimate = useRef(false)
+  const [currentIndex, setCurrentIndex] = useState(0)
   const currentSceneIndex = useRef(0)
 
   // 定义全局变量
@@ -43,8 +44,8 @@ const MerryCard: FC<IProps> = () => {
   const pointLightArr: THREE.Mesh[] = []
   const radius = 3
   // 星星随机到天上
-  const starsArr: any[] = [] // 星星的起始位置
-  const endArr: any[] = [] // 星星的结束位置
+  const starsArr: THREE.Vector3[] = [] // 星星的起始位置
+  const endArr: THREE.Vector3[] = [] // 星星的结束位置
 
   const scenes = [
     {
@@ -107,17 +108,20 @@ const MerryCard: FC<IProps> = () => {
     createStar()
     // 7.创建爱心
     createHeart()
+    // // 8.渲染
+    animate()
 
     // 监听窗口的变化
     window.addEventListener('resize', handleResize)
-    window.addEventListener('wheel', handleWheel)
+    window.addEventListener('wheel', handleWheel, true)
     // 销毁
     return () => {
       window.removeEventListener('resize', handleResize)
-      window.removeEventListener('wheel', handleWheel)
+      window.removeEventListener('wheel', handleWheel, true)
     }
   }, [])
 
+  // 初始化three
   const initThree = () => {
     // 0.初始化性能监视器
     status = new Status()
@@ -155,11 +159,9 @@ const MerryCard: FC<IProps> = () => {
     controls = new OrbitControls(camera, renderer.domElement)
     controls.target.set(-8, 2, 0)
     controls.enableDamping = true
-
-    // 4.渲染
-    animate()
   }
 
+  // 加载模型
   const loadModel = () => {
     // 5.初始化模型加载器和模型解压器
     const dracoLoader = new DRACOLoader()
@@ -185,6 +187,7 @@ const MerryCard: FC<IProps> = () => {
     })
   }
 
+  // 初始化背景
   const initBg = () => {
     // 加载环境纹理
     const rgbeLoader = new RGBELoader()
@@ -196,6 +199,7 @@ const MerryCard: FC<IProps> = () => {
     })
   }
 
+  // 创建水面
   const createWater = () => {
     // 创建水面
     const waterGeometry = new THREE.CircleGeometry(300, 32)
@@ -211,6 +215,7 @@ const MerryCard: FC<IProps> = () => {
     scene.add(water)
   }
 
+  // 添加光照
   const initLight = () => {
     // 6.添加光照
     // 6.1.添加环境光
@@ -274,6 +279,7 @@ const MerryCard: FC<IProps> = () => {
     })
   }
 
+  // 创建星星
   const createStar = () => {
     // 一种具有实例化渲染支持的特殊版本的Mesh。
     // 你可以使用 InstancedMesh 来渲染大量具有相同几何体与材质、但具有不同世界变换的物体。
@@ -302,6 +308,7 @@ const MerryCard: FC<IProps> = () => {
     scene.add(starsInstance)
   }
 
+  // 创建爱心
   const createHeart = () => {
     const heartShape = new THREE.Shape()
     heartShape.moveTo(25, 25) // 将当前点移动到(25, 25)
@@ -391,20 +398,27 @@ const MerryCard: FC<IProps> = () => {
     renderer.setSize(window.innerWidth, window.innerHeight)
   }
 
-  const handleWheel = (e: any) => {
-    if (isAnimate) return
-    setIsAnimate(true)
+  /**
+   * 监听鼠标滚轮的变化
+   * @param e
+   * @returns
+   */
+  const handleWheel = (e: WheelEvent) => {
+    if (isAnimate.current) return
+    isAnimate.current = true
     // 鼠标滚轮往下滚动
     if (e.deltaY > 0) {
       currentSceneIndex.current++
+      setCurrentIndex((prevState) => prevState + 1)
       if (currentSceneIndex.current > scenes.length - 1) {
         currentSceneIndex.current = 0
+        setCurrentIndex(0)
       }
     }
     // 执行回调函数，切换场景效果
     scenes[currentSceneIndex.current].callback()
     setTimeout(() => {
-      setIsAnimate(false)
+      isAnimate.current = false
     }, 1000)
   }
 
@@ -438,13 +452,18 @@ const MerryCard: FC<IProps> = () => {
 
   return (
     <MerryCardWrapper>
-      {/* <div ref={statusRef}></div> */}
+      <div ref={statusRef}></div>
       {isLoading && (
         <div className="loading">
           <Spin />
           <div className="loading-text">拼命加载中...</div>
         </div>
       )}
+      <div className="text">
+        {scenes.map((scene, index) => {
+          return currentIndex == index && <div key={index}>{scene.text}</div>
+        })}
+      </div>
       <canvas className="webgl"></canvas>
     </MerryCardWrapper>
   )
