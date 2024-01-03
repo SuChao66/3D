@@ -459,6 +459,7 @@ const MerryCard: FC<IProps> = () => {
           <div className="loading-text">拼命加载中...</div>
         </div>
       )}
+      {/* 引导语展示 */}
       <div className="text">
         {scenes.map((scene, index) => {
           return currentIndex == index && <div key={index}>{scene.text}</div>
