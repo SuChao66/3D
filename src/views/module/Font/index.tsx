@@ -25,6 +25,7 @@ const Font: FC<IProps> = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [message] = useState('星辰大海')
   const statusRef = useRef<HTMLDivElement | null>(null)
+  const guiRef = useRef<HTMLDivElement | null>(null)
 
   // 定义全局变量
   let scene: THREE.Scene,
@@ -100,6 +101,7 @@ const Font: FC<IProps> = () => {
 
     // 5.实例化GUI
     const gui = new GUI()
+    guiRef.current?.appendChild(gui.domElement)
     const sceneFolder = gui.addFolder('scene')
     sceneFolder
       .add(params.scene, 'backgroundBlurriness', 0, 1)
@@ -219,6 +221,7 @@ const Font: FC<IProps> = () => {
   return (
     <FontWrapper>
       <div ref={statusRef}></div>
+      <div ref={guiRef}></div>
       {isLoading && (
         <div className="loading">
           <Spin />
