@@ -42,6 +42,11 @@ const Building = React.lazy(
 const MerryCard = React.lazy(
   () => import(/* webpackChunkName: 'MerryCard' */ '@/views/module/MerryCard')
 )
+// 虚拟展厅
+const VirtualRoom = React.lazy(
+  () =>
+    import(/* webpackChunkName: 'VirtualRoom' */ '@/views/module/VirtualRoom')
+)
 
 const routes: RouteObject[] = [
   { path: '/', element: <Navigate to="/home" /> },
@@ -54,7 +59,8 @@ const routes: RouteObject[] = [
   { path: '/earthMoon', element: <Earth /> },
   { path: '/earth', element: <CoolEarth /> },
   { path: '/building', element: <Building /> },
-  { path: '/merry', element: <MerryCard /> }
+  { path: '/merry', element: <MerryCard /> },
+  { path: '/virtual_show_room', element: <VirtualRoom /> }
 ]
 
 export default routes
