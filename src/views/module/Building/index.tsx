@@ -75,7 +75,7 @@ const Building: FC<IProps> = () => {
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.setPixelRatio(window.devicePixelRatio)
     renderer.shadowMap.enabled = true // 允许投射动态阴影
-    renderer.outputColorSpace = THREE.SRGBColorSpace
+    renderer.outputEncoding = THREE.sRGBEncoding
     // renderer.physicallyCorrectLights = true;
     // 色调映射（很重要）
     renderer.toneMapping = THREE.ACESFilmicToneMapping

@@ -145,7 +145,7 @@ const MerryCard: FC<IProps> = () => {
     // 设置渲染画布的大小
     renderer.setSize(window.innerWidth, window.innerHeight)
     // 设置编码输出方式
-    renderer.outputColorSpace = THREE.SRGBColorSpace
+    renderer.outputEncoding = THREE.sRGBEncoding
     // 设置色调映射
     renderer.toneMapping = THREE.ACESFilmicToneMapping
     // 设置色调映射的曝光级别

@@ -1,5 +1,12 @@
 export const caseList = [
   {
+    path: '/smartFactory',
+    title: '智慧工厂',
+    description: '🏭 智慧工厂，物联网世界即将来临',
+    image: require('@/assets/images/smart_factory.png'),
+    three: true
+  },
+  {
     path: '/robot',
     title: 'Robot',
     description: '🤖️ 元宇宙虚拟机器人',
@@ -59,13 +66,6 @@ export const caseList = [
     path: '/merry',
     title: '圣诞快乐',
     description: '🎄 愿你圣诞快乐',
-    image: require('@/assets/images/merry_card.png'),
-    three: true
-  },
-  {
-    path: '/virtual_show_room',
-    title: '虚拟展厅',
-    description: '🚉 虚拟展厅，让你不出门即可浏览',
     image: require('@/assets/images/merry_card.png'),
     three: true
   }
